@@ -1,47 +1,51 @@
-# CPU Scheduling Simulation
+# CPU Scheduling Algorithms Simulator
 
-A Java-based simulation of operating system CPU scheduling algorithms, implementing Priority Scheduling, Round Robin, and Multi-Level Queue scheduling logic.
+An implementation of CPU process scheduling algorithms in Java. This project simulates core operating system process scheduling mechanisms including Priority Scheduling, Round-Robin (RR) with configurable time quanta, and Multi-Level Queue (MLQ) scheduling.
 
-## Overview
+## Implemented Scheduling Algorithms
 
-This project simulates process execution and CPU resource allocation using classical operating system scheduling concepts. It evaluates process throughput, turnaround time, waiting time, and response efficiency across different queue management strategies.
-
-## Features
-
-- Process Representation: Encapsulates process metadata such as Process ID, Arrival Time, Burst Time, Priority, and Execution State.
-- Priority Scheduling: Allocates CPU time based on process priority attributes.
-- Round Robin (RR) Scheduling: Implements time-slice multiplexing for preemptive execution.
-- Multi-Level Queue Scheduling: Segregates processes into distinct priority queues with specific scheduling policies per level.
+1. **Priority Scheduler**: Preemptive priority-based execution queue using Java `PriorityQueue`. Lower numerical values represent higher process priority.
+2. **Round-Robin Scheduler**: Time-sliced round-robin execution queue with configurable `Time Quantum`. Processes with remaining execution burst times are re-queued until completion.
+3. **Multi-Level Queue (MLQ) Scheduler**: Dual-level queue separating high-priority and low-priority process pools, executing foreground queues prior to background workloads.
 
 ## Project Structure
 
+```
 CPUzamanlayici/
 ├── src/
-│   └── main/
-│       └── java/
-│           └── com/
-│               └── mycompany/
-│                   └── cpuzamanlayici/
-│                       ├── MultiLevelQueueScheduler.java
-│                       ├── PriorityScheduler.java
-│                       ├── Process.java
-│                       └── RoundRobinScheduler.java
-├── pom.xml
-├── .gitignore
+│   ├── main/java/com/mycompany/cpuzamanlayici/
+│   │   ├── CPUzamanlayici.java            # Main CLI & benchmark entrypoint
+│   │   ├── Process.java                    # Process data model
+│   │   ├── PriorityScheduler.java          # Priority scheduling engine
+│   │   ├── RoundRobinScheduler.java        # Round-Robin scheduling engine
+│   │   └── MultiLevelQueueScheduler.java   # Multi-level queue engine
+│   └── test/java/com/mycompany/cpuzamanlayici/
+│       └── SchedulerTest.java              # Unit tests
+├── pom.xml                                 # Maven configuration
 └── README.md
+```
 
-## Prerequisites
+## Requirements & Building
 
-- Java Development Kit (JDK) 11 or higher
-- Apache Maven 3.6+
+- **JDK**: Java 17 or higher
+- **Build Tool**: Maven 3.8+
 
-## Build & Execution Instructions
+### Building from Source
 
-1. Compile the project using Maven:
-   mvn clean compile
+```bash
+mvn clean package
+```
 
-2. Package the application:
-   mvn package
+### Running the Simulator
 
-3. Run the scheduler:
-   java -cp target/CPUzamanlayici-1.0-SNAPSHOT.jar com.mycompany.cpuzamanlayici.RoundRobinScheduler
+Interactive CLI menu:
+
+```bash
+mvn exec:java -Dexec.mainClass="com.mycompany.cpuzamanlayici.CPUzamanlayici"
+```
+
+Running unit test suite:
+
+```bash
+mvn test
+```

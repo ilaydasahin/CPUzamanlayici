@@ -1,8 +1,13 @@
+# Maven build output
 target/
-*.class
+
+# IDE & Editor files
+.idea/
+*.iml
 .classpath
 .project
 .settings/
-.idea/
-*.iml
-*.log
+.nb-gradle/
+build/
+nbproject/private/
+nbproject/project.xml
