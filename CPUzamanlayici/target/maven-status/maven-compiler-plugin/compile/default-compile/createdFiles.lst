@@ -1,0 +1,4 @@
+com\mycompany\cpuzamanlayici\PriorityScheduler.class
+com\mycompany\cpuzamanlayici\RoundRobinScheduler.class
+com\mycompany\cpuzamanlayici\MultiLevelQueueScheduler.class
+com\mycompany\cpuzamanlayici\Process.class
